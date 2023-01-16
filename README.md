@@ -10,3 +10,13 @@ uncommented assets for using image or sgv files
     - assets/svg/
 
 Studied stateful and stateless widget.
+
+Make div block : using Expanded widget.
+
+Alignment items : using Column widget: crossAxisAlignment or mainAxisAlignment.
+
+padding items : padding: EdgeInsets.symmetric(vertical: 10) in Container widget
+
+currency: install "dart pub add intl" 
+
+easy to give space if I am using SizedBox widget
