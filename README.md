@@ -20,3 +20,5 @@ padding items : padding: EdgeInsets.symmetric(vertical: 10) in Container widget
 currency: install "dart pub add intl" 
 
 easy to give space if I am using SizedBox widget
+
+BottomNavigationBar and BottomNavigationBarItem for bottom navigation
