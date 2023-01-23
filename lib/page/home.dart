@@ -11,10 +11,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<Map<String, String>> datas = [];
-
+  late int _currentPageIndex;
   @override
   void initState() {
     super.initState();
+    _currentPageIndex = 0;
     datas = [
       {
         "image": "assets/images/1.jpg",
@@ -93,9 +94,6 @@ class _HomeState extends State<Home> {
     return AppBar(
       backgroundColor: Colors.white,
       title: GestureDetector(
-        onTap: () {
-          print("click");
-        },
         child: Row(
           children: [
             Text(
@@ -201,12 +199,38 @@ class _HomeState extends State<Home> {
     );
   }
 
+  BottomNavigationBarItem _bottomNavigationBarItem(
+      String iconName, String label) {
+    return BottomNavigationBarItem(
+        icon: SvgPicture.asset("assets/svg/${iconName}_off.svg", width: 22),
+        label: label);
+  }
+
+  Widget _bottonNavigationBarWidget() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      onTap: (int index) {
+        setState(() {
+          _currentPageIndex = index;
+        });
+      },
+      currentIndex: _currentPageIndex,
+      items: [
+        _bottomNavigationBarItem("home", "홈"),
+        _bottomNavigationBarItem("notes", "동네생활"),
+        _bottomNavigationBarItem("location", "내근처"),
+        _bottomNavigationBarItem("chat", "채팅"),
+        _bottomNavigationBarItem("user", "나의당근")
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appbarWidget(),
       body: _bodyWidget(),
-      // bottomNavigationBar: Container(),
+      bottomNavigationBar: _bottonNavigationBarWidget(),
     );
   }
 }
